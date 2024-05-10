@@ -1,0 +1,75 @@
+const [data,setData] = useState({})
+    const [gender,setGender] = useState()
+    const [english,setEnglish] = useState(true)
+    const [physics,setPhysics] = useState(true)
+    const [maths,setMaths] = useState(true)
+
+    // const checkBox = ()=>{
+    //     if(data==="English")
+    //     {
+    //         if(english===true){
+    //             //console.log(data)
+    //         }
+    //         setEnglish(!english)
+    //     }
+    //     if(data==="Physics")
+    //     {
+    //         if(physics===true){
+    //             //console.log(data)
+    //         }
+    //         setPhysics(!physics)
+    //     }
+    //     if(data==="Maths")
+    //     {
+    //         if(maths===true){
+    //             //console.log(data)
+    //         }
+    //         setMaths(!maths)
+    //     }
+    //  }
+
+    function changeHandler(e){
+        const {name,value,type,checked} = e.target
+        // const name = e.target.name
+        // const value = e.target.value 
+        setData((previousState)=>{
+            return({...previousState,[name]:[value]})
+        })
+        setGender((previousState)=>{
+            return({...previousState,[name]:value})
+        })
+        
+        if (type==="checkbox"){
+            setData((previousState)=>{
+                return({...previousState,[name]:value})
+           
+            })
+            if(value!='English'){
+                setEnglish(english)
+            }
+            
+            setPhysics(!physics)
+            setMaths(!maths)
+        }
+        // else{
+        //     setData((previousState)=>{
+        //         return({...previousState,[name]:checked})
+        //     })
+        
+    }
+    
+
+ 
+    // Handle Submit form function
+    function handleSubmit(e){
+        e.preventDefault()
+        console.log("Form Submitted...!!")
+        console.log(data)
+    }
+
+    // Handle Form Reset Function
+    function handleReset(){
+        setData("")
+        setGender("")
+        console.log("Data have been Reseted...!!!..!!!");
+    }
